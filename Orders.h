@@ -22,9 +22,9 @@ public :
 
 
     //check of the oder is valid
-    void validate();
+    virtual void validate() = 0;
     //execute method
-    void execute();
+    virtual void execute() = 0;
 
     //set type of the subclass
     void set_type_id(int num);
