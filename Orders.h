@@ -24,9 +24,9 @@ public :
 
 
     //check of the oder is valid
-    void validate();
+    virtual bool validate() = 0;
     //execute method
-    void execute();
+    virtual void execute() = 0;
 
     //set type of the subclass
     void set_type_id(int num);
@@ -58,6 +58,10 @@ public:
     Deploy &operator=(const Deploy &e);
 
     string *get_type();
+
+    bool validate();
+
+    void execute();
 
 private:
     string type1 = {"deploy"};

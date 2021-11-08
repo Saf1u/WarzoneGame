@@ -21,7 +21,7 @@ Order::Order() {
 }
 
 
-
+// orderlist functions
 OrderList::OrderList() {
     // cout << "Inside default constructor Order class" << endl;
 
@@ -94,14 +94,9 @@ Order::Order(const Order& O)
     this->type_id = O.type_id;
 }
 void Order::validate() {
-    cout << "validate if the order is valid" << endl;
-    valid = true;
 }
 
 void Order::execute() {
-    if (valid) {
-        cout << "executes the action..." << endl;
-    }
 }
 
 void Order::set_type_id(int num) {
@@ -168,14 +163,24 @@ void OrderList::move(int position, int new_position) {
     }
 }
 
+vector<Order *>  OrderList::get_order_list_new() {
+    cout<< "Inside Order List get order method" << endl;
+    return vec_order_list;
+}
 
+void OrderList::Add(Order * o){
+    this->set_order_list(o);
+}
+
+
+// Deploy order method
 Deploy::Deploy() {
-    cout << "Inside default constructor Deploy class" << endl;
+    //Inside default constructor Deploy class
     set_type_id(0);
 }
 
 Deploy::Deploy(const Deploy &e) {
-    cout << "Inside copy constructor of Deploy" << endl;
+    //Inside copy constructor of Deploy
 };
 
 Deploy &Deploy::operator=(const Deploy &e) {
@@ -184,13 +189,32 @@ Deploy &Deploy::operator=(const Deploy &e) {
     return *this;
 }
 
-Deploy::~Deploy() {
+Deploy::~Deploy() { // destructor
 };
+
+void Deploy::execute() {
+    // places some armies from reinforcement pool -> target territory owned by player ONLY IF validate is true
+    if (validate()) {
+        // numberOfArmies = numberOfArmies + % of armies from reinforcement pool
+    }
+}
+
+bool Deploy::validate() {
+    // checks if target territory belongs to player issuing the order
+    if (territory) {
+        return true;
+    }
+    // else ->
+    else
+        return false;
+}
 
 string *Deploy::get_type() {
     return &type1;
 }
 
+
+// Advance order method
 Advance::Advance() {
     cout << "Inside default constructor Advance class" << endl;
     set_type_id(1);
@@ -209,6 +233,8 @@ Advance &Advance::operator=(const Advance &e) {
 Advance::~Advance() {
 }
 
+
+// Bomb order method
 Bombs::Bombs() {
     cout << "Inside default constructor Bombs class" << endl;
     set_type_id(2);
@@ -227,6 +253,8 @@ Bombs &Bombs::operator=(const Bombs &e) {
 Bombs::~Bombs() {
 }
 
+
+// Blockade order method
 Blockades::Blockades() {
     cout << "Inside default constructor Blockades class" << endl;
     set_type_id(3);
@@ -242,23 +270,11 @@ Blockades &Blockades::operator=(const Blockades &e) {
     return *this;
 }
 
-std::ostream& operator<<(std::ostream& stream, const OrderList& e){
-
-    cout << "Inside stream  operator of Order List"<< endl;
-    int index = 1;
-    for (Order * element: e.vec_order_list) {
-
-        stream << "This is card number: " << index << " ,the type of this card is "   << element << " " << endl;
-
-        index++;
-    }
-    return stream;
-
-}
-
 Blockades::~Blockades() {
 }
 
+
+// Airlift order methods
 Airlifts::Airlifts() {
     cout << "Inside default constructor Airlifts class" << endl;
     set_type_id(4);
@@ -277,22 +293,14 @@ Airlifts &Airlifts::operator=(const Airlifts &e) {
 Airlifts::~Airlifts() {
 }
 
+
+// negotiate order methods
 Negotiate::Negotiate() {
     cout << "Inside default constructor Negotiate class" << endl;
     set_type_id(5);
 }
 
 Negotiate::~Negotiate() {
-}
-
-vector<Order *>  OrderList::get_order_list_new() {
-    cout<< "Inside Order List get order method" << endl;
-    return vec_order_list;
-}
-
-
-void OrderList::Add(Order * o){
-    this->set_order_list(o);
 }
 
 Negotiate::Negotiate(const Negotiate &e) {
@@ -303,4 +311,19 @@ Negotiate &Negotiate::operator=(const Negotiate &e) {
     cout << "Inside operator = of Negotiate" << endl;
 
     return *this;
+}
+
+
+std::ostream& operator<<(std::ostream& stream, const OrderList& e){
+
+    cout << "Inside stream  operator of Order List"<< endl;
+    int index = 1;
+    for (Order * element: e.vec_order_list) {
+
+        stream << "This is card number: " << index << " ,the type of this card is "   << element << " " << endl;
+
+        index++;
+    }
+    return stream;
+
 }
