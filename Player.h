@@ -8,15 +8,17 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include<Orders.h>
-#include <Map.h>
-#include <Cards.h>
+#include"Orders.h"
+#include "Map.h"
+#include "Cards.h"
+#include <algorithm>
 
 using namespace std;
 
 class Orders;
 class Territory;
 class Hand;
+
 
 class Player{
 public:
@@ -36,15 +38,19 @@ public:
     //bool IssueOrder(String name);
     OrderList* orders;
     Hand* hand;
-
-
     void AddToList(Order* o);
 
-    // void IssueOrder(Order o);
+     void IssueOrder();
     Hand *getHand();
     void SetHand(Hand h);
 
+    void Swap (Territory *a, Territory *b);
 
+    vector<Territory *> BubbleSort (vector<Territory *> &array);
+
+    vector<Territory *> Neighboors (vector<Territory *> &array);
+
+    vector<Territory *> BubbleSort2 (vector<Territory *> &array);
 
     string _name;
     //METHODSS

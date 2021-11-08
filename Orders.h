@@ -1,18 +1,18 @@
-
-
 #pragma once
 
 #include <iostream>
 #include <fstream>
+#include "Player.h"
 #include <vector>
 #include <string>
+#include "Map.h"
+
 
 using namespace std;
 
 class Order {
 public :
-    Order();
-
+    Order(& Player );
     Order(bool b, vector<string> vector1, int i);
 
     ~Order();
@@ -20,11 +20,10 @@ public :
     Order& operator = (const Order &O);//assignment construtor
     friend std::ostream& operator <<(std::ostream& stream, const Order& e);
 
-
     //check of the oder is valid
-    void validate();
+    virtual bool validate() = 0;
     //execute method
-    void execute();
+    virtual void execute() = 0;
 
     //set type of the subclass
     void set_type_id(int num);
@@ -49,7 +48,7 @@ public:
     Deploy();
 
     ~Deploy();
-
+    void execute();
     Deploy(const Deploy &e);
 
     Deploy &operator=(const Deploy &e);
@@ -147,5 +146,3 @@ public:
 private:
     vector<Order *> vec_order_list; //store the orders
 };
-
-

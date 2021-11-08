@@ -1,4 +1,3 @@
-
 #include "Orders.h"
 
 //Order&Order ::operator = (const Order&O)
@@ -61,6 +60,7 @@ OrderList& OrderList::operator=(const OrderList& e){
         bool valid = element->get_valid();
         vector<string> vec_type1 = element->get_List();
         int type_id= element->get_ID();
+        //note2
         Order * T1 = new Order (valid,vec_type1,type_id);
         this->vec_order_list.push_back(T1);
     }
@@ -93,16 +93,7 @@ Order::Order(const Order& O)
     this->vec_type1 = O.vec_type1;
     this->type_id = O.type_id;
 }
-void Order::validate() {
-    cout << "validate if the order is valid" << endl;
-    valid = true;
-}
 
-void Order::execute() {
-    if (valid) {
-        cout << "executes the action..." << endl;
-    }
-}
 
 void Order::set_type_id(int num) {
     type_id = num;
@@ -135,6 +126,7 @@ void OrderList::set_order_list(Order *i) {
     bool valid = i->get_valid();
     vector<string> vec_type1 = i->get_List();
     int type_id= i->get_ID();
+    //not1
     Order * T1 = new Order (valid,vec_type1,type_id);
     cout << "Before pushing the order" << endl;
     vec_order_list.push_back(T1); //add an order
@@ -172,6 +164,12 @@ void OrderList::move(int position, int new_position) {
 Deploy::Deploy() {
     cout << "Inside default constructor Deploy class" << endl;
     set_type_id(0);
+}
+
+void Deploy ::execute() {
+
+// We should access and manipulate player territories
+
 }
 
 Deploy::Deploy(const Deploy &e) {
