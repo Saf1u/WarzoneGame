@@ -6,6 +6,8 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include "Orders.fwd.h"
+#include "Player.fwd.h"
 
 using namespace std;
 
@@ -14,7 +16,7 @@ public :
     Order();
 
     Order(bool b, vector<string> vector1, int i);
-
+    Order(Player*);
     ~Order();
     Order(const Order& O);//copy constructor
     Order& operator = (const Order &O);//assignment construtor
@@ -22,9 +24,9 @@ public :
 
 
     //check of the oder is valid
-    virtual void validate() = 0;
+    void validate();
     //execute method
-    virtual void execute() = 0;
+    void execute();
 
     //set type of the subclass
     void set_type_id(int num);
@@ -39,6 +41,7 @@ public :
 
 private :
     bool valid;
+Player *p;
     vector<string> vec_type1 = {"deploy", "advance", "Bombs", "Blockades", "Airlifts", "negotiate"};
     int type_id;
 };

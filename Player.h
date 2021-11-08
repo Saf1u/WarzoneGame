@@ -2,28 +2,24 @@
 // Created by Noor on 2021-09-28.
 //
 
-#ifndef COMP345_PLAYER_H
-#define COMP345_PLAYER_H
+#pragma once
 
 #include <iostream>
 #include <string>
 #include <vector>
-#include<Orders.h>
-#include <Map.h>
-#include <Cards.h>
+#include "Map.h"
+#include "Cards.h"
+#include "Orders.fwd.h"
+#include "Player.fwd.h"
+#include <algorithm>
 
 using namespace std;
-
-class Orders;
-class Territory;
 class Hand;
-
 class Player{
 public:
     //constructors
     Player();
     Player(string _name);
-
     Player(Hand * hand);
 
     Player(const Player& p);
@@ -32,19 +28,23 @@ public:
     Player(vector<Territory *> territoriesList, OrderList *orders, Hand *hand,string _name);
 
     vector <Territory*> territoriesList;
-    vector<Order *>  _OrderList;
+    vector<Order*>  _OrderList;
     //bool IssueOrder(String name);
     OrderList* orders;
     Hand* hand;
-
-
     void AddToList(Order* o);
 
-    // void IssueOrder(Order o);
+     void IssueOrder();
     Hand *getHand();
     void SetHand(Hand h);
 
+    void Swap (Territory *a, Territory *b);
 
+    vector<Territory *> BubbleSort (vector<Territory *> &array);
+
+    vector<Territory *> Neighboors (vector<Territory *> &array);
+
+    vector<Territory *> BubbleSort2 (vector<Territory *> &array);
 
     string _name;
     //METHODSS
@@ -60,5 +60,5 @@ public:
 };
 
 
-#endif //COMP345_PLAYER_H
+
 

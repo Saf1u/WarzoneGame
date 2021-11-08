@@ -93,7 +93,16 @@ Order::Order(const Order& O)
     this->vec_type1 = O.vec_type1;
     this->type_id = O.type_id;
 }
+void Order::validate() {
+    cout << "validate if the order is valid" << endl;
+    valid = true;
+}
 
+void Order::execute() {
+    if (valid) {
+        cout << "executes the action..." << endl;
+    }
+}
 
 void Order::set_type_id(int num) {
     type_id = num;
@@ -271,6 +280,9 @@ Airlifts::~Airlifts() {
 Negotiate::Negotiate() {
     cout << "Inside default constructor Negotiate class" << endl;
     set_type_id(5);
+}
+
+Negotiate::~Negotiate() {
 }
 
 vector<Order *>  OrderList::get_order_list_new() {

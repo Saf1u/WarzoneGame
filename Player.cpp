@@ -6,9 +6,9 @@
 #include <iostream>
 #include <vector>
 #include <stdio.h>
-#include <Orders.h>
+#include "Orders.h"
 #include <set>
-#include <Cards.h>
+#include "Cards.h"
 using namespace std;
 
 Player::Player() {
@@ -181,11 +181,118 @@ vector<Territory*> Player::getTerritoriesList(){
     return territoriesList;
 }
 
-/*
-bool Player::IssueOrder(String name){
-    Order *order_ptr=new Order("Advance!!!","Advance onto this place");
-    orderList->add(order_ptr);
-    return true;
+void Player::Swap (Territory *a, Territory *b){
+    Territory temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+vector<Territory *>  Player::BubbleSort (vector<Territory *> &array){
+
+    //comparisons will be done n times
+    for (int i = 0; i < array.size(); i++)
+    {
+        //compare elemet to the next element, and swap if condition is true
+        for(int j = 0; j < array.size() - 1; j++)
+        {
+            if (array[j]->numberOfArmies < array[j+1]->numberOfArmies)
+                Swap((array[j]), array[j+1]);
+        }
+    }
+    return array;
+}
+
+vector<Territory *>  Player::BubbleSort2 (vector<Territory *> &array){
+
+    //comparisons will be done n times
+    for (int i = 0; i < array.size(); i++)
+    {
+        //compare elemet to the next element, and swap if condition is true
+        for(int j = 0; j < array.size() - 1; j++)
+        {
+            if (array[j]->numberOfArmies > array[j+1]->numberOfArmies)
+                Swap((array[j]), array[j+1]);
+        }
+    }
+
+    return array;
+}
+
+vector<Territory *> Neighboors (vector<Territory *> &array){
+
+    vector<Territory *> Neighboors;
+      bool found =false;
+    for(Territory * t : array ){
+
+        for(int i = 0 ; i < t->edges.size() ; i++){
+            if (count(array.begin(), array.end(), t->edges[i])) {
+                cout << "Element found";
+                found=true;
+            }
+            else {
+                cout << "Element not found";
+            }
+            if(!found)
+            Neighboors.push_back(t->edges[i]);
+        }
+    }
+
+    return  Neighboors;
 
 }
-*/
+void Player::IssueOrder(){
+
+   /* Step 1 Decide the priority of the to Attack and to Defend methods
+    In function of the number of armies in the Territory
+    1-Loop through the vector of territories
+    2- Sort the array by territory with the least number of armies
+    3- The array in step 2 will become array of territories to defend
+    4-Loop through the vector of territories again
+    5-For each Territory,Store its neighbors in an array of territories
+     std::vector<Territory*> edges; edges, is the neighbor for all the territories
+    6-  Sort the array by territory with the least number of armies
+    7-These are going to be the territories to attack
+    */
+
+   // 1-Loop through the vector of territories
+   // 2-Sort the array by territory with the least number of armies
+   // 3-The array in step 2 will become array of territories to defend
+
+    vector<Territory *>  toDefend= this->BubbleSort(this->territoriesList);
+
+
+    //4-Loop through the vector of territories again
+   // 5-For each Territory,Store its neighbors in an array of territories
+   // std::vector<Territory*> edges; edges, is the neighbor for all the territories
+    //6-  Sort the array by territory with the least number of armies
+
+//    vector<Territory *>  Neighboor = this->Neighboors(this->territoriesList);
+
+   // vector<Territory *>  toAttack= this->BubbleSort2(Neighboor);
+ //  Watchout for the pointers and references
+
+   /*Step 2 -Deploy order
+    * -Issue a deploy order in the list of armies to defend
+    * -The list is coming from the to Defend mehtod
+    * -As long as there are armies to deploy
+    * -So we use to deploy and then as parameters pass the terrytories by priority
+    * -We can implement a system of % , 50% for top 3 territories etc
+    */
+
+   for(Order * o : this->_OrderList){
+
+    o->execute();
+
+   };
+
+
+    /* Step 3-Make a decision to attack or to defend
+     *
+     *Same as step 2 but to attack , what is the difference  ? ask Joey for that
+     */
+
+    /* Step-4 Once all of these have a done he can call a special order from the Hand
+     *
+     */
+
+}

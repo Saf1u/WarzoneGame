@@ -10,9 +10,9 @@ int main() {
     cout << "Creating objects of all types using default constructors" << endl;
     Deploy deploy1;
     Advance advance1;
-    Bomb bomb1;
-    Blockade blockade1;
-    Airlift airlift1;
+    Bombs bomb1;
+    Blockades blockade1;
+    Airlifts airlift1;
     Negotiate negotiate1;
 
     Order o;
