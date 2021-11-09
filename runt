@@ -1,0 +1,7 @@
+loadmap grt
+loadmap vre
+loadmap ggfg
+validatemap
+addplayer
+loadmap
+addplayer qqqw

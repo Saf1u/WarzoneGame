@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/safwanahmed/CLionProjects/untitled/FileCommandProcessor.cpp
+FileCommandProcessor.h
+/Users/safwanahmed/CLionProjects/untitled/FileCommandProcessor.h
+
+/Users/safwanahmed/CLionProjects/untitled/FileCommandProcessor.h
+string
+-
+GameEngine.h
+/Users/safwanahmed/CLionProjects/untitled/GameEngine.h
+fstream
+/Users/safwanahmed/CLionProjects/untitled/fstream
+
+/Users/safwanahmed/CLionProjects/untitled/GameEngine.h
+iostream
+-
+unordered_map
+-
+
