@@ -1,4 +1,13 @@
 cmake-build-debug/
-.map
+
 *.txt
 .idea/
+Map.cpp
+Map.h
+Player.cpp
+Player.fwd.h
+Player.h
+Map.fwd.h
+Orders.cpp
+Orders.fwd.h
+Orders.h
