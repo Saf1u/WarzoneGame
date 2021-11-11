@@ -105,7 +105,7 @@ void GameEngine::startupphase() {
            bool result;
 
            if (com->name.find("loadmap") == 0) {
-               cout<<com->name<<"lol3"<<endl;
+
                result = this->loadMap(com->name);
                if (result) {
                    com->saveEffect("map successfully loaded");
@@ -246,13 +246,13 @@ for(auto & player : players){
 }
 
         return true;
-    //}
-    cout << "Command: loadMap()" << endl;
+
+
 }
 bool GameEngine::validateMap() {
    return map->validate();
     // brings player to state = map validated
-    cout << "Command: validateMap()" << endl;
+
 }
 
 void startupPhase();

@@ -53,16 +53,14 @@ bool CommandProcessor::validate(Command * com ) {
     if (com->name.find("addplayer")==0){
         name="addplayer" ;
     }
-//    cout<<"in "<<currentState<<endl;
-//    cout<<"going to "<<com->name<<endl;
+
     if (transitions[currentState][name].empty()){
         com->saveEffect("wrong transition");
 
 
         return false;
     }else{
-//        string action=transitions[currentState][name];
-//        currentState=action;
+
 
         if (com->name.find("loadmap")==0){
 
@@ -84,16 +82,7 @@ bool CommandProcessor::validate(Command * com ) {
             com->saveEffect("gamestarted");
             return true;
         }
-//        if(com->name=="replay"){
-//
-//            com->saveEffect("replayed");
-//            return;
-//        }
-//        if(com->name=="quit"){
-//
-//            com->saveEffect("it quit");
-//            return;
-//        }
+
     }
 
 }
