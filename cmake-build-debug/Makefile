@@ -142,6 +142,33 @@ untitled/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/build
 .PHONY : untitled/fast
 
+Cards.o: Cards.cpp.o
+
+.PHONY : Cards.o
+
+# target to build an object file
+Cards.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Cards.cpp.o
+.PHONY : Cards.cpp.o
+
+Cards.i: Cards.cpp.i
+
+.PHONY : Cards.i
+
+# target to preprocess a source file
+Cards.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Cards.cpp.i
+.PHONY : Cards.cpp.i
+
+Cards.s: Cards.cpp.s
+
+.PHONY : Cards.s
+
+# target to generate assembly for a file
+Cards.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Cards.cpp.s
+.PHONY : Cards.cpp.s
+
 CommandProcessor.o: CommandProcessor.cpp.o
 
 .PHONY : CommandProcessor.o
@@ -277,6 +304,33 @@ Map.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Map.cpp.s
 .PHONY : Map.cpp.s
 
+Orders.o: Orders.cpp.o
+
+.PHONY : Orders.o
+
+# target to build an object file
+Orders.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Orders.cpp.o
+.PHONY : Orders.cpp.o
+
+Orders.i: Orders.cpp.i
+
+.PHONY : Orders.i
+
+# target to preprocess a source file
+Orders.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Orders.cpp.i
+.PHONY : Orders.cpp.i
+
+Orders.s: Orders.cpp.s
+
+.PHONY : Orders.s
+
+# target to generate assembly for a file
+Orders.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Orders.cpp.s
+.PHONY : Orders.cpp.s
+
 Player.o: Player.cpp.o
 
 .PHONY : Player.o
@@ -340,6 +394,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... untitled"
+	@echo "... Cards.o"
+	@echo "... Cards.i"
+	@echo "... Cards.s"
 	@echo "... CommandProcessor.o"
 	@echo "... CommandProcessor.i"
 	@echo "... CommandProcessor.s"
@@ -355,6 +412,9 @@ help:
 	@echo "... Map.o"
 	@echo "... Map.i"
 	@echo "... Map.s"
+	@echo "... Orders.o"
+	@echo "... Orders.i"
+	@echo "... Orders.s"
 	@echo "... Player.o"
 	@echo "... Player.i"
 	@echo "... Player.s"

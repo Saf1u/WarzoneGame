@@ -3,7 +3,6 @@
 //
 
 #include "CommandProcessor.h"
-#include "GameEngine.h"
 #include <fstream>
 
 using namespace std;
@@ -22,7 +21,31 @@ void CommandProcessor::saveCommand(Command * com) {
     }
 }
 
-void CommandProcessor::validate(Command * com ) {
+CommandProcessor::CommandProcessor() {
+    (transitions)["start"]["loadmap"] = "maploaded";
+    (transitions)["maploaded"]["loadmap"] = "maploaded";
+    (transitions)["maploaded"]["validatemap"] = "mapvalidated";
+    (transitions)["mapvalidated"]["addplayer"] = "playeradded";
+    (transitions)["playeradded"]["addplayer"] = "playeradded";
+    (transitions)["playeradded"]["gamestart"] = "assignreinforcement";
+    (transitions)["assignreinforcement"]["issueorder"] = "issueorder";
+    (transitions)["issueorder"]["issueorder"] = "issueorder";
+    (transitions)["issueorder"]["endissueorder"] = "execorder";
+    (transitions)["execorder"]["execorder"] = "execorder";
+    (transitions)["execorder"]["endexecorder"] = "assignreinforcement";
+    (transitions)["execOrder"]["win"] = "win";
+    (transitions)["win"]["end"] = "quit";
+    (transitions)["win"]["play"] = "start";
+    currentState="start";
+
+}
+void CommandProcessor::makeTransition(string movement){
+    string action=transitions[currentState][movement];
+      currentState=action;
+
+}
+
+bool CommandProcessor::validate(Command * com ) {
     string name=com->name;
    if (com->name.find("loadmap")==0){
       name="loadmap" ;
@@ -30,42 +53,47 @@ void CommandProcessor::validate(Command * com ) {
     if (com->name.find("addplayer")==0){
         name="addplayer" ;
     }
-    if (com->transitions[com->currentState][name]==""){
+//    cout<<"in "<<currentState<<endl;
+//    cout<<"going to "<<com->name<<endl;
+    if (transitions[currentState][name].empty()){
         com->saveEffect("wrong transition");
+
+
+        return false;
     }else{
-        string action=com->transitions[com->currentState][name];
-        com->currentState=action;
+//        string action=transitions[currentState][name];
+//        currentState=action;
 
         if (com->name.find("loadmap")==0){
-            com->loadMap();
+
             com->saveEffect("maploaded");
-            return;
+            return true;
         }
         if (com->name.find("addplayer")==0){
-            com->addPlayer();
+
             com->saveEffect("playeradded");
-            return;
+            return true;
         }
-        if(com->name=="valiadtemap"){
-            com->validateMap();
+        if(com->name=="validatemap"){
+
             com->saveEffect("mapvalidated");
-            return;
+            return true;
         }
         if(com->name=="gamestart"){
-            com->gameStart();
+
             com->saveEffect("gamestarted");
-            return;
+            return true;
         }
-        if(com->name=="replay"){
-            com->replay();
-            com->saveEffect("replayed");
-            return;
-        }
-        if(com->name=="quit"){
-            com->quit();
-            com->saveEffect("it quit");
-            return;
-        }
+//        if(com->name=="replay"){
+//
+//            com->saveEffect("replayed");
+//            return;
+//        }
+//        if(com->name=="quit"){
+//
+//            com->saveEffect("it quit");
+//            return;
+//        }
     }
 
 }

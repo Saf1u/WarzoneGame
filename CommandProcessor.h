@@ -10,11 +10,7 @@
 
 
 
-command* function readCommand(){
-   input string <<cin
-   Command(input)
-   savecommand(command)
-}
+
 
 using namespace std;
 
@@ -23,10 +19,14 @@ private:
     vector<Command*> commands;
    virtual Command* readCommand();
     void saveCommand(Command*);
+    string currentState;
+    unordered_map<string, unordered_map<string, string>> transitions;
 
 public:
+    CommandProcessor();
     Command* getCommand();
-    void validate(Command *);
+    bool validate(Command *);
+    void makeTransition(string);
 
 
   virtual  ~CommandProcessor();

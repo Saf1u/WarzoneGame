@@ -141,9 +141,22 @@ CMakeFiles/untitled.dir/FileCommandProcessorAdapter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/FileCommandProcessorAdapter.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/safwanahmed/CLionProjects/untitled/FileCommandProcessorAdapter.cpp -o CMakeFiles/untitled.dir/FileCommandProcessorAdapter.cpp.s
 
+CMakeFiles/untitled.dir/Cards.cpp.o: CMakeFiles/untitled.dir/flags.make
+CMakeFiles/untitled.dir/Cards.cpp.o: ../Cards.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/untitled.dir/Cards.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled.dir/Cards.cpp.o -c /Users/safwanahmed/CLionProjects/untitled/Cards.cpp
+
+CMakeFiles/untitled.dir/Cards.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled.dir/Cards.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/safwanahmed/CLionProjects/untitled/Cards.cpp > CMakeFiles/untitled.dir/Cards.cpp.i
+
+CMakeFiles/untitled.dir/Cards.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/Cards.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/safwanahmed/CLionProjects/untitled/Cards.cpp -o CMakeFiles/untitled.dir/Cards.cpp.s
+
 CMakeFiles/untitled.dir/Map.cpp.o: CMakeFiles/untitled.dir/flags.make
 CMakeFiles/untitled.dir/Map.cpp.o: ../Map.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/untitled.dir/Map.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/untitled.dir/Map.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled.dir/Map.cpp.o -c /Users/safwanahmed/CLionProjects/untitled/Map.cpp
 
 CMakeFiles/untitled.dir/Map.cpp.i: cmake_force
@@ -156,7 +169,7 @@ CMakeFiles/untitled.dir/Map.cpp.s: cmake_force
 
 CMakeFiles/untitled.dir/Player.cpp.o: CMakeFiles/untitled.dir/flags.make
 CMakeFiles/untitled.dir/Player.cpp.o: ../Player.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/untitled.dir/Player.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/untitled.dir/Player.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled.dir/Player.cpp.o -c /Users/safwanahmed/CLionProjects/untitled/Player.cpp
 
 CMakeFiles/untitled.dir/Player.cpp.i: cmake_force
@@ -167,6 +180,19 @@ CMakeFiles/untitled.dir/Player.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/Player.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/safwanahmed/CLionProjects/untitled/Player.cpp -o CMakeFiles/untitled.dir/Player.cpp.s
 
+CMakeFiles/untitled.dir/Orders.cpp.o: CMakeFiles/untitled.dir/flags.make
+CMakeFiles/untitled.dir/Orders.cpp.o: ../Orders.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/untitled.dir/Orders.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled.dir/Orders.cpp.o -c /Users/safwanahmed/CLionProjects/untitled/Orders.cpp
+
+CMakeFiles/untitled.dir/Orders.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled.dir/Orders.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/safwanahmed/CLionProjects/untitled/Orders.cpp > CMakeFiles/untitled.dir/Orders.cpp.i
+
+CMakeFiles/untitled.dir/Orders.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/Orders.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/safwanahmed/CLionProjects/untitled/Orders.cpp -o CMakeFiles/untitled.dir/Orders.cpp.s
+
 # Object files for target untitled
 untitled_OBJECTS = \
 "CMakeFiles/untitled.dir/main.cpp.o" \
@@ -174,8 +200,10 @@ untitled_OBJECTS = \
 "CMakeFiles/untitled.dir/GameEngine.cpp.o" \
 "CMakeFiles/untitled.dir/FileCommandProcessor.cpp.o" \
 "CMakeFiles/untitled.dir/FileCommandProcessorAdapter.cpp.o" \
+"CMakeFiles/untitled.dir/Cards.cpp.o" \
 "CMakeFiles/untitled.dir/Map.cpp.o" \
-"CMakeFiles/untitled.dir/Player.cpp.o"
+"CMakeFiles/untitled.dir/Player.cpp.o" \
+"CMakeFiles/untitled.dir/Orders.cpp.o"
 
 # External object files for target untitled
 untitled_EXTERNAL_OBJECTS =
@@ -185,11 +213,13 @@ untitled: CMakeFiles/untitled.dir/CommandProcessor.cpp.o
 untitled: CMakeFiles/untitled.dir/GameEngine.cpp.o
 untitled: CMakeFiles/untitled.dir/FileCommandProcessor.cpp.o
 untitled: CMakeFiles/untitled.dir/FileCommandProcessorAdapter.cpp.o
+untitled: CMakeFiles/untitled.dir/Cards.cpp.o
 untitled: CMakeFiles/untitled.dir/Map.cpp.o
 untitled: CMakeFiles/untitled.dir/Player.cpp.o
+untitled: CMakeFiles/untitled.dir/Orders.cpp.o
 untitled: CMakeFiles/untitled.dir/build.make
 untitled: CMakeFiles/untitled.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable untitled"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable untitled"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/untitled.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

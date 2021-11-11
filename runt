@@ -1,7 +1,11 @@
-loadmap grt
-loadmap vre
-loadmap ggfg
+loadmap germany2.map
+loadmap artic.map
 validatemap
-addplayer
-loadmap
-addplayer qqqw
+loadmap germany2.map
+validatemap
+addplayer mark
+addplayer james
+validatemap
+addplayer tim
+addplayer mike
+gamestart

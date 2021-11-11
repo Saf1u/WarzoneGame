@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <unordered_map>
+#include "Player.h"
 
 // Makes sure the content is read only once if the file is read more than one.
 
@@ -20,21 +21,41 @@ using namespace std;
 class GameEngine {
 public:
     GameEngine();
-    virtual ~GameEngine();
+    bool readFromFile ;
+    string filename;
+    GameEngine(GameEngine const&);
     // Accessors
-    const bool& getQuit() const;
-    string getState();
-    // Modifiers
-    void setQuit();
-    void setState(string currentState);
     // Functions
     static void printMenu();
-private:
-    bool quit;
-    string state;
+    Map* map;
+    Deck* gameDeck;
+    vector<Player*> players;
+    void start();
+    bool loadMap(const string&);
+    bool validateMap();
+    bool addPlayer(string);
+    bool assignCountries();
+    void issueOrder();
+    bool quit();
+    bool replay();
+    bool gameStart();
+     void win();
+     void play();
+     void end();
+     void startupphase();
+     void endIssueOrders(); // endissueorders and endexecorders pretty much just end the phase so we can move on
+    // to the next state, allowing the user to enter a different set of commands.
+     void execOrder();
+     void endExecOrders();
+    ~GameEngine();
+    GameEngine& operator =(const GameEngine &m);
+
+
+
+
 
 };
-
+ostream&  operator <<(ostream &strm,const GameEngine &m);
 class Command {
 
 public:
@@ -43,33 +64,17 @@ public:
     Command();
     Command(string);
     void saveEffect(string);
+    Command(Command const &);
     string effect;
     // Empty constructor
-    virtual ~Command();
+     ~Command();
     //bool executeCommand();
-    static void start();
-    static bool loadMap();
-    static bool validateMap();
-    static bool addPlayer();
-    static bool assignCountries();
-    static void issueOrder();
-    static bool quit();
-    static bool replay();
-    static bool gameStart();
 
-    static void endIssueOrders(); // endissueorders and endexecorders pretty much just end the phase so we can move on
-    // to the next state, allowing the user to enter a different set of commands.
-    static void execOrder();
-    static void endExecOrders();
 
-    static void win();
-    static void play();
-    static void end();
-    static string currentState;
-    static  unordered_map<string, unordered_map<string, string>> transitions;
-    static unordered_map<string, unordered_map<string, string>>* initializeMap();
+
+
 };
-
+ostream&  operator <<(ostream &strm,const Command &m);
 
 
 

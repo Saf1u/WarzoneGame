@@ -6,11 +6,66 @@
 
 // Because this is the game engine, we need to import the various classes
 #include "GameEngine.h"
+#include "CommandProcessor.h"
+#include "FileCommandProcessorAdapter.h"
+#include "FileCommandProcessor.h"
+
 
 // Implementation of class GameEngine
 //Constructor and Destructor
 GameEngine::GameEngine() {
-    quit = false;
+    vector<Card*> cards;
+    cards.push_back(new Bomb);
+    cards.push_back(new Blockade);
+    cards.push_back(new Airlift);
+    cards.push_back(new Diplomacy);
+    cards.push_back(new Bomb);
+    cards.push_back(new Blockade);
+    cards.push_back(new Airlift);
+    cards.push_back(new Diplomacy);
+    cards.push_back(new Bomb);
+    cards.push_back(new Blockade);
+    cards.push_back(new Airlift);
+    cards.push_back(new Diplomacy);
+    cards.push_back(new Bomb);
+    cards.push_back(new Blockade);
+    cards.push_back(new Airlift);
+    cards.push_back(new Diplomacy);
+map=new Map;
+gameDeck=new Deck(cards);
+}
+
+GameEngine::~GameEngine() {
+    delete map;
+    map= nullptr;
+    delete gameDeck;
+    gameDeck= nullptr;
+    for(auto & i : players){
+        if (i!= nullptr){
+            delete i;
+            i= nullptr;
+        }
+
+    }
+}
+GameEngine::GameEngine(const GameEngine& g) {
+   map=new Map(*(g.map));
+    for(int i=0;i<g.players.size();i++){
+        this->players.push_back(new Player);
+        this->players[i]=new Player(*(g.players[i]));
+    }
+    gameDeck=new Deck(*(g.gameDeck));
+
+}
+
+GameEngine& GameEngine::operator=(const GameEngine &g) {
+   this->map=g.map;
+   this->gameDeck=g.gameDeck;
+    for(int i=0;i<g.players.size();i++){
+        this->players.push_back(new Player);
+        this->players[i]=g.players[i];
+    }
+    return *this;
 }
 Command::Command(string a) {
     name=a;
@@ -18,81 +73,106 @@ Command::Command(string a) {
 void Command::saveEffect(string e) {
     this->effect=e;
 }
+ostream& operator <<(ostream &strm,const Command&t) {
+    return strm<<"name:"+t.name<<","<<"effect:"+t.effect<<endl;
+}
+ostream& operator <<(ostream &strm,const GameEngine&t) {
+    strm<<"Current map:"<<t.map;
+    strm<<"Players:"<<endl;
+    for(auto & i : t.players){
+        strm<<i<<endl;
+    }
+    strm<<t.gameDeck<<endl;
+    return strm;
+}
+void GameEngine::startupphase() {
+    bool startUp=true;
+
+    CommandProcessor *c;
+    if (this->readFromFile){
+        c= new FileCommandProcessorAdapter(new FileCommandProcessor(this->filename));
+    }else{
+        c=new CommandProcessor;
+    }
+    while(startUp){
+        Command *com=c->getCommand();
+       bool validity= c->validate(com);
+       if(!validity){
+           cout<<"invalid state transition"<<endl;
+           continue;
+       }else {
+
+           bool result;
+
+           if (com->name.find("loadmap") == 0) {
+               cout<<com->name<<"lol3"<<endl;
+               result = this->loadMap(com->name);
+               if (result) {
+                   com->saveEffect("map successfully loaded");
+                   cout<<com->effect<<endl;
+                   c->makeTransition("loadmap");
+               } else {
+                   com->saveEffect("could not loadMap");
+                   cout<<com->effect<<endl;
+                   continue;
+               }
+           }
+
+
+           if (com->name.find("addplayer") == 0) {
+               result = addPlayer(com->name);
+               if (result) {
+                   com->saveEffect("player successfully added");
+                   cout<<com->effect<<endl;
+                   c->makeTransition("addplayer");
+               } else {
+                   com->saveEffect("could not addplayer");
+                   cout<<com->effect<<endl;
+                   continue;
+               }
+           }
+
+           if (com->name == "validatemap") {
+               result= validateMap();
+               if (result){
+                   com->saveEffect("map successfully validated");
+                   cout<<com->effect<<endl;
+                   c->makeTransition("validatemap");
+               }else{
+                   com->saveEffect("could not validate map");
+                   cout<<com->effect<<endl;
+                   continue;
+               }
+
+           }
+
+           if (com->name == "gamestart") {
+               startUp= false;
+               gameStart();
+
+           }
+           }
+
+
+       }
 
 
 
-unordered_map<string, unordered_map<string, string>>* Command::initializeMap(){
-    auto *transition=new unordered_map<string, unordered_map<string, string>> ;
 
 
-
-     (*transition)["start"]["loadmap"] = "maploaded";
-    (*transition)["maploaded"]["loadmap"] = "maploaded";
-    (*transition)["maploaded"]["validatemap"] = "mapvalidated";
-    (*transition)["mapvalidated"]["addplayer"] = "playeradded";
-    (*transition)["playeradded"]["addplayer"] = "playeradded";
-    (*transition)["playeradded"]["gamestart"] = "assignreinforcement";
-    (*transition)["assignreinforcement"]["issueorder"] = "issueorder";
-    (*transition)["issueorder"]["issueorder"] = "issueorder";
-    (*transition)["issueorder"]["endissueorder"] = "execorder";
-    (*transition)["execorder"]["execorder"] = "execorder";
-    (*transition)["execorder"]["endexecorder"] = "assignreinforcement";
-    (*transition)["execOrder"]["win"] = "win";
-    (*transition)["win"]["end"] = "quit";
-    (*transition)["win"]["play"] = "start";
-    return transition;
 }
 
-string Command::currentState="start";
-unordered_map<string, unordered_map<string, string>> Command::transitions=*(initializeMap());
 
 
 
-//bool Command::executeCommand() {
-//    bool stat;
-//    string check(this->name);
-//    if (check.find("loadmap")==0){
-//       stat=loadMap();
-//       //this will parse the string and load the desired map in the future
-//       if (stat){
-//           this->effect="map successfully loaded";
-//       }else{
-//           this->effect="error loading map";
-//       }
-//        return  stat;
-//    }
-//    if (check.find("addplayer")==0){
-//        stat=addPlayer();
-//        //this will parse the string and load the desired map in the future
-//        if (stat){
-//            this->effect="player successfully added";
-//        }else{
-//            this->effect="error adding player";
-//        }
-//        return  stat;
-//    }
-//
-//
-//}
 
-GameEngine::~GameEngine() {
-    quit = true;
-}
-// Accessors
-const bool& GameEngine::getQuit() const {
-    return this->quit;
-}
-string GameEngine::getState() {
-    return state;
-}
-// Modifiers
-void GameEngine::setQuit() {
-    quit = true;
-}
-void GameEngine::setState(string currentState) {
-    this->state = currentState;
-}
-//Functions
+
+
+
+
+
+
+
 void GameEngine::printMenu() { //prints the menu
     cout << "--- MAIN MENU ---" << "\n" << "\n"
          << "What do you want to do? " << "\n"
@@ -117,70 +197,111 @@ void GameEngine::printMenu() { //prints the menu
 Command::Command() = default;
 Command::~Command()= default;
 
-void Command::start() { // starts the game -> brings the player to state = start
+void GameEngine::start() { // starts the game -> brings the player to state = start
     cout << "Command: start()" << endl;
 }
 
-bool Command::loadMap() { // brings player to state = map loaded
+bool GameEngine::loadMap(const string& x) { // brings player to state = map loaded
+    string fileLocation=x.substr(x.find(" ")+1,x.length());
+    fileLocation="../"+fileLocation;
+    fstream  file(fileLocation);
+    delete this->map;
+    this->map=new Map;
+    MapLoader *loader=new MapLoader(this->map);
+   bool res= loader->loadMaps(file);
+    return  res;
+}
+bool GameEngine::quit() { // brings player to state = map loaded
 
     cout << "Command: loadMap()" << endl;
 }
-bool Command::quit() { // brings player to state = map loaded
+
+bool GameEngine::replay() { // brings player to state = map loaded
 
     cout << "Command: loadMap()" << endl;
 }
+bool GameEngine::gameStart() { // brings player to state = map loaded
+    int numOfTerritories=map->map.size();
+    int numOfPlayers=players.size();
+    int allocation=numOfTerritories/numOfPlayers;
+    for(int i=0,playercount=0;i<numOfTerritories&&playercount<players.size();i=i+allocation,playercount++) {
+        for (int j = i; j < i + allocation; j++) {
+            if (j >= numOfTerritories) { break; }
+            Territory *t = map->map.at(j);
+            players.at(playercount)->addTerritory(t);
+        }
+    }
+    int residue=numOfTerritories%numOfPlayers;
 
-bool Command::replay() { // brings player to state = map loaded
+    if(residue!=0){
+        for(int j=numOfTerritories-residue,playercount=0;j<numOfTerritories;j++,playercount++){
+            Territory *t = map->map.at(j);
+            players.at(playercount%players.size())->addTerritory(t);
+        }
+    }
+for(auto & player : players){
+    player->getHand()->Add(*gameDeck->draw());
+    player->getHand()->Add(*gameDeck->draw());
+    player->reinforcmentPool+=50;
+}
 
+        return true;
+    //}
     cout << "Command: loadMap()" << endl;
 }
-bool Command::gameStart() { // brings player to state = map loaded
-
-    cout << "Command: loadMap()" << endl;
-}
-bool Command::validateMap() { // brings player to state = map validated
+bool GameEngine::validateMap() {
+   return map->validate();
+    // brings player to state = map validated
     cout << "Command: validateMap()" << endl;
 }
 
-bool Command::addPlayer() { // adds a new player w/ function new Player
+void startupPhase();
+
+bool GameEngine::addPlayer(string x) {
+    string player=x.substr(x.find(" ")+1,x.length());
+    Player *p=new Player;
+    p->_name=player;
+    players.push_back(p);
+    // adds a new player w/ function new Player
 
     cout << "Command: addPlayer()" << endl;
+    return true;
 }
 
-bool Command::assignCountries() { //
+bool GameEngine::assignCountries() { //
 
     cout << "Command: assignCountries()" << endl;
 }
 
-void Command::issueOrder() {
+void GameEngine::issueOrder() {
 
     cout << "Command: issueOrders()" << endl;
 }
 
-void Command::endIssueOrders() {
+void GameEngine::endIssueOrders() {
 
     cout << "Command: endIssueOrders" << endl;
 }
 
-void Command::execOrder() {
+void GameEngine::execOrder() {
 
     cout << "Command: executeOrders" << endl;
 }
 
-void Command::endExecOrders() {
+void GameEngine::endExecOrders() {
 
     cout << "Command: endExecOrders" << endl;
 }
 
-void Command::win() {
+void GameEngine::win() {
     cout << "Command: win" << endl;
 }
 
-void Command::play() {
+void GameEngine::play() {
 
     cout << "Command: play" << endl;
 }
 
-void Command::end() {
+void GameEngine::end() {
     cout << "Command: end" << endl;
 }

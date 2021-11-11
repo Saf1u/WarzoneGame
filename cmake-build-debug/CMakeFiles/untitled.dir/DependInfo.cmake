@@ -4,11 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/safwanahmed/CLionProjects/untitled/Cards.cpp" "/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/Cards.cpp.o"
   "/Users/safwanahmed/CLionProjects/untitled/CommandProcessor.cpp" "/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/CommandProcessor.cpp.o"
   "/Users/safwanahmed/CLionProjects/untitled/FileCommandProcessor.cpp" "/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/FileCommandProcessor.cpp.o"
   "/Users/safwanahmed/CLionProjects/untitled/FileCommandProcessorAdapter.cpp" "/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/FileCommandProcessorAdapter.cpp.o"
   "/Users/safwanahmed/CLionProjects/untitled/GameEngine.cpp" "/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/GameEngine.cpp.o"
   "/Users/safwanahmed/CLionProjects/untitled/Map.cpp" "/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/Map.cpp.o"
+  "/Users/safwanahmed/CLionProjects/untitled/Orders.cpp" "/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/Orders.cpp.o"
   "/Users/safwanahmed/CLionProjects/untitled/Player.cpp" "/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/Player.cpp.o"
   "/Users/safwanahmed/CLionProjects/untitled/main.cpp" "/Users/safwanahmed/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/main.cpp.o"
   )

@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/safwanahmed/CLionProjects/untitled/Cards.cpp">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/safwanahmed/CLionProjects/untitled/Cards.h">
+			<Option target="untitled"/>
+		</Unit>
 		<Unit filename="/Users/safwanahmed/CLionProjects/untitled/CommandProcessor.cpp">
 			<Option target="untitled"/>
 		</Unit>
@@ -107,10 +113,25 @@
 		<Unit filename="/Users/safwanahmed/CLionProjects/untitled/Map.cpp">
 			<Option target="untitled"/>
 		</Unit>
+		<Unit filename="/Users/safwanahmed/CLionProjects/untitled/Map.fwd.h">
+			<Option target="untitled"/>
+		</Unit>
 		<Unit filename="/Users/safwanahmed/CLionProjects/untitled/Map.h">
 			<Option target="untitled"/>
 		</Unit>
+		<Unit filename="/Users/safwanahmed/CLionProjects/untitled/Orders.cpp">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/safwanahmed/CLionProjects/untitled/Orders.fwd.h">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/safwanahmed/CLionProjects/untitled/Orders.h">
+			<Option target="untitled"/>
+		</Unit>
 		<Unit filename="/Users/safwanahmed/CLionProjects/untitled/Player.cpp">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/safwanahmed/CLionProjects/untitled/Player.fwd.h">
 			<Option target="untitled"/>
 		</Unit>
 		<Unit filename="/Users/safwanahmed/CLionProjects/untitled/Player.h">
