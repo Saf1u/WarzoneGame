@@ -19,6 +19,7 @@ public:
 
     Card();
 
+
     virtual ~Card();
 
     explicit Card(string  type);

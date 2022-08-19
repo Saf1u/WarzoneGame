@@ -109,7 +109,7 @@ for(auto o:this->p->orders->get_order_list_new()){
     }
 }
 
-   //Check for dpeloy
+   //Check for deploy
    if(!deployExist) {
        Deploy *d = new Deploy;
        d->p= this->p;

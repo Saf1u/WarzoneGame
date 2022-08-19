@@ -7,4 +7,5 @@ class Airlift;
 class Diplomacy;
 class Hand;
 class Deck;
+//foward declaration class to prvent cyclic dependencies
 #endif //WARZONEGAME2_ORDERS_FWD_H

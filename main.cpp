@@ -8,10 +8,12 @@ using namespace std;
 
 
 int main(int argc,char **argv) {
-    GameEngine *c=new GameEngine;
+    auto *c=new GameEngine;
     if (strcmp(argv[1],"-file")==0){
+
         c->readFromFile=true;
         c->filename=argv[2];
+
       c->c= new FileCommandProcessorAdapter(new FileLineReader(argv[2]));
 
 

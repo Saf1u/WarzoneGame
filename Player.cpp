@@ -15,7 +15,7 @@
 using namespace std;
 
 Player::Player() {
-    std::cout << "Inside default constructor of Player" << std::endl;
+
     this->_name = "g";
     this->territoriesList = vector<Territory *>();
     this->orders = new OrderList();
@@ -57,7 +57,7 @@ void Player::SetStrategy(PlayerStrategies *p) {
 }
 
 Player::Player(string _name) {
-    cout << "Inside parameterized constructor of Player" << endl;
+
     this->_name = _name;
     this->territoriesList = vector<Territory *>();
     this->orders = new OrderList();
@@ -65,12 +65,12 @@ Player::Player(string _name) {
 }//1 parameter constructor
 
 Player::Player(Hand *hand) {
-    cout << "Inside parameterized constructor of Player with hand" << endl;
+
     this->hand = new Hand(*(hand));
 }//1 parameter constructor
 
 Player::Player(const Player &p) {
-    cout << "Inside copy constructor of Player" << endl;
+
     this->_name = p._name;
     this->orders = p.orders;
     this->hand = p.hand;
@@ -81,7 +81,7 @@ Player::Player(const Player &p) {
 }//copy constructor
 
 Player &Player::operator=(const Player &p) {
-    cout << "Inside operator  of Player" << endl;
+
     this->_name = p._name;
     this->territoriesList = p.territoriesList;
     this->orders = p.orders;
@@ -89,7 +89,7 @@ Player &Player::operator=(const Player &p) {
     return *this;
 }//assignment op.
 void Player::SetHand(Hand h) {
-    cout << "Inside Set Hand" << endl;
+
 
 }
 

@@ -1,8 +1,8 @@
 
 #include "PlayerStrategies.h"
 #include "Player.h"
-
-int main(){
+void StrategyTester();
+void StrategyTester(){
 
     Territory *t1=new Territory("hhh",1,2,6);
     Territory *t2=new Territory("testttt",1,2,9);
@@ -52,5 +52,5 @@ int main(){
 
 
 
-    return 0;
+
 };

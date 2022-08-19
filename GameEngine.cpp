@@ -140,6 +140,7 @@ void GameEngine::tournamentSetup(string command) {
     this->numbersToPlay= stoi(gamesToPlay);
 }
 void GameEngine::startupphase() {
+
     bool startUp=true;
     bool tournament=false;
     string info;
@@ -147,7 +148,7 @@ void GameEngine::startupphase() {
 
 
     while(startUp){
-
+        cout<<"readigng file"<<endl;
         Command *com=c->getCommand();
         if (com->name.find("tournament") == 0) {
             tournament= c->validate(com);
@@ -235,7 +236,7 @@ void GameEngine::startupphase() {
             for (int j = 0; j < mapsToLoad.size(); j++) {
                 bool res = loadMap(mapsToLoad[j]);
                 if (!res) {
-                    cout << "one maps was not valid" << endl;
+                    cout << "one map was not valid" << endl;
                     exit(0);
                 }
                 res = validateMap();

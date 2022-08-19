@@ -2,8 +2,8 @@
 #include <time.h>
 
 using namespace std;
-
-int main() {
+void TestOrders();
+void TestOrders() {
     cout << "Testing Order Driver\n" << endl;
     OrderList anOrderList;
 /* initialize random seed: */

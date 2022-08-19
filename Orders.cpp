@@ -21,7 +21,7 @@ Order::Order() {
 
 Order::Order(Player* player, Map * map) {
 
-    cout << "Inside parameterized constructors for value semantics" << endl;
+
 
 }
 void Order::SetPlayer(Player *player) {
@@ -101,24 +101,16 @@ Blockades ::Blockades(bool valids, vector<string> vec_types1 ,int type_ids ) {
 }
 
 OrderList::OrderList(vector<Order *> e){
-    cout << "888888" << endl;
-    cout << "Right here" << endl;
-    cout << "888888" << endl;
+
 
     int size= e.size();
-    cout << "The vector list size is " <<  size << endl;
+
     for(Order * element :e ){
-        cout << "888888" << endl;
-        cout << "Right here" << endl;
-        cout << "888888" << endl;
+
         bool valids = element->get_valid();
         vector<string> vec_types1 = element->get_List();
         int type_ids= element->get_ID();
-        cout << "888888" << endl;
-        cout << "Right here" << endl;
-        cout << "888888" << endl;
-        cout << valids<< endl;
-        cout << type_ids<< endl;
+
 
     }
 
@@ -166,9 +158,7 @@ OrderList& OrderList::operator=(const OrderList& e){
 }
 
 void Order::PrintAllOrder() {
-    cout << "Inside Print All Method  of Order" << endl;
 
-    cout << "Is it valid" << this->valid << endl;
     int index = 1;
     for (auto element: this->vec_type1) {
 
@@ -200,9 +190,9 @@ void Order::PrintAllOrder() {
 
 std::ostream &operator<<(std::ostream &stream, const Order &e) {
 
-    cout << "Inside stream operator  of Order" << endl;
 
-    stream << "Is it valid" << e.valid << endl;
+
+
     int index = 1;
     for (auto element: e.vec_type1) {
 
@@ -316,16 +306,16 @@ void OrderList::move(int position, int new_position) {
 
 
 Deploy::Deploy() {
-    cout << "Inside default constructor Deploy class" << endl;
+
     set_type_id(0);
 }
 
 Deploy::Deploy(const Deploy &e) {
-    cout << "Inside copy constructor of Deploy" << endl;
+
 };
 
 Deploy &Deploy::operator=(const Deploy &e) {
-    cout << "Inside operator = of Deploy" << endl;
+
 
     return *this;
 }
@@ -334,16 +324,16 @@ Deploy::~Deploy() {
 };
 
 Advance::Advance() {
-    cout << "Inside default constructor Advance class" << endl;
+
     set_type_id(1);
 }
 
 Advance::Advance(const Advance &e) {
-    cout << "Inside copy constructor of Advance" << endl;
+
 };
 
 Advance &Advance::operator=(const Advance &e) {
-    cout << "Inside operator = of Advance" << endl;
+
 
     return *this;
 }
@@ -352,16 +342,16 @@ Advance::~Advance() {
 }
 
 Bombs::Bombs() {
-    cout << "Inside default constructor Bombs class" << endl;
+
     set_type_id(2);
 }
 
 Bombs::Bombs(const Bombs &e) {
-    cout << "Inside copy constructor of Bombs" << endl;
+
 };
 
 Bombs &Bombs::operator=(const Bombs &e) {
-    cout << "Inside operator = of Bombs" << endl;
+
 
     return *this;
 }
@@ -370,23 +360,23 @@ Bombs::~Bombs() {
 }
 
 Blockades::Blockades() {
-    cout << "Inside default constructor Blockades class" << endl;
+
     set_type_id(3);
 }
 
 Blockades::Blockades(const Blockades &e) {
-    cout << "Inside copy constructor of Blockades" << endl;
+
 };
 
 Blockades &Blockades::operator=(const Blockades &e) {
-    cout << "Inside operator = of Blockades" << endl;
+
 
     return *this;
 }
 
 std::ostream& operator<<(std::ostream& stream, const OrderList& e){
 
-    cout << "Inside stream  operator of Order List"<< endl;
+
     int index = 1;
     for (Order * element: e.vec_order_list) {
 
@@ -402,16 +392,16 @@ Blockades::~Blockades() {
 }
 
 Airlifts::Airlifts() {
-    cout << "Inside default constructor Airlifts class" << endl;
+
     set_type_id(4);
 }
 
 Airlifts::Airlifts(const Airlifts &e) {
-    cout << "Inside copy constructor of Airlifts" << endl;
+
 };
 
 Airlifts &Airlifts::operator=(const Airlifts &e) {
-    cout << "Inside operator = of Airlifts" << endl;
+
 
     return *this;
 }
@@ -433,7 +423,7 @@ bool Airlifts ::validate() {
 
 void Airlifts ::execute() {
 
-    cout << "Executing Airlifts Order" << endl;
+
     bool verif = this->validate();
     // Verify if the player can choose between all the teritories first
     // Check in Validate
@@ -464,10 +454,8 @@ void Airlifts ::execute() {
                 Territories2.push_back(Territories[i]);
             }
         }
-cout <<"Source Territory before change  " << endl;
-      cout <<  *Territories2[0] << endl;
-        cout <<"Target Territory before change " << endl;
-        cout <<  *Territories2[1] << endl;
+
+
 
 
         //source
@@ -487,10 +475,7 @@ cout <<"Source Territory before change  " << endl;
 
             Territories2[0]->SetNumberOfArmies(Army1);
 
-            cout <<"Source Territory after change  " << endl;
-            cout <<  *Territories2[0] << endl;
-            cout <<"Target Territory after change " << endl;
-            cout <<  *Territories2[1] << endl;
+
             p->getOrdersList()->remove(this);
 
 
@@ -498,7 +483,7 @@ cout <<"Source Territory before change  " << endl;
 
     }
     else{
-        cout<<"There is no Airlift Card for the Player who executed this order";
+
         p->getOrdersList()->remove(this);
     }
 
@@ -522,7 +507,7 @@ bool Deploy::validate(){
 
 void Deploy::execute(){
 
-cout<<"Execution of Deploy order" << endl;
+
     // places some armies from reinforcement pool -> target territory owned by player ONLY IF validate is true
     if (validate()) {
         vector<Territory *> PlayerTerritories = this->p->toDefend();
@@ -536,12 +521,7 @@ cout<<"Execution of Deploy order" << endl;
                 Target.push_back(PlayerTerritories[i]);
         }
         // Add the number of armies to the reinforcement pool
-        cout << "This territory will receive armies because of a deploy order" << endl;
-        cout<<"---------------------------------------------" << endl;
-        cout<<"---------------------------------------------" << endl;
-        cout << *Target[0] << endl;
-        cout<<"---------------------------------------------" << endl;
-        cout<<"---------------------------------------------" << endl;
+
 
         int NumberOfReceivedArmies;
 
@@ -557,9 +537,7 @@ cout<<"Execution of Deploy order" << endl;
             }
         }
 
-        cout << "The territory received " << 10<< " armies." << endl;
-        cout << "We deployed to the following territory" << endl;
-        cout << *Target[0] << endl;
+
 
 
         p->getOrdersList()->remove(this);
@@ -567,7 +545,7 @@ cout<<"Execution of Deploy order" << endl;
         this->LogMessage="Player: "+this->p->GetName()+" has called deploy order";
         Notify(*this);
     } else{
-        cout<<"There is no Deploy order for the Player who executed this order";
+
         p->getOrdersList()->remove(this);
     }
 };
@@ -597,7 +575,7 @@ void Order::setDeck(Deck * deck) {
 }
 
 void Advance::execute() {
-    cout <<" Inside Advance Validate" << endl;
+
 
     bool validate = this->validate();
 
@@ -659,7 +637,7 @@ bool checkers= false;
 
 
 
-        cout << "We are here just before executing attack " << endl;
+
         // Source Territory
         PlayerTerritories[0];
 
@@ -753,9 +731,7 @@ for(int i=0;i<Source.size();i++) {
                 BothBelongToPlayer = true;
         }
 
-        // Target belongs to enemy territory
-        cout << "Are the two territories Adjacent ? " << Adjacent << " are they both to the same player ?"
-             << BothBelongToPlayer << endl;
+
         //Because the Aggressive Player does not need to move armies from The Strongest territory
         /*
            * We need to verify here if the Attacked Player is the neutral Player
@@ -788,7 +764,7 @@ for(int i=0;i<Source.size();i++) {
 
         if (Adjacent && BothBelongToPlayer == false ) {
 
-            cout << "We are trying an Attack" << endl;
+
             // Source Territory army Supply
             int AttackerArmy = Source[0]->numberOfArmies;
             // Target Territory army supply
@@ -1020,7 +996,7 @@ for(int i=0;i<Source.size();i++) {
 };
 
 bool Advance::validate(){
-    cout<<"Check for execution of Advance" << endl;
+
 
     bool AdvanceAttack = true;
     if(this->p->toAttack().size() ==0)
@@ -1042,7 +1018,7 @@ bool Bombs::validate() {
     if(this->p->toAttack().size()==0){
         return false;
     }
-    cout << "validating Bomb" << endl;
+
 
     vector<Card *> _collection = this->p->getHand()->GetCollection();
   cout <<" Size of the hand is " << _collection.size() << endl;
@@ -1058,7 +1034,7 @@ bool Bombs::validate() {
 
 
 void Bombs::execute() {
-    cout << "you are now executing bomb order " << endl;
+
     bool verifie = this->validate();
     // Verify if the player can choose between all the teritories first
     // Check in Validate
@@ -1109,7 +1085,7 @@ void Bombs::execute() {
 
 
 void Negotiate::execute() {
-    cout << "Execution of Negotiate" << endl;
+
     //Add implementation
     // targets enemy player
     //player issuing and enemy cannot attack each other
@@ -1218,7 +1194,7 @@ void Order::SetListOfPlayers(vector<Player *> list){
 
 
 void Blockades::execute(){
-    cout<<"Execution of Blockades" << endl;
+
     bool verif = this->validate();
     // Verify if the player can choose between all the teritories first
     // Check in Validate
@@ -1303,7 +1279,7 @@ void Blockades::execute(){
 };
 
 Negotiate::Negotiate() {
-    cout << "Inside default constructor Negotiate class" << endl;
+
     set_type_id(5);
 }
 
@@ -1311,7 +1287,7 @@ Negotiate::~Negotiate() {
 }
 
 vector<Order *>  OrderList::get_order_list_new() {
-    cout<< "Inside Order List get order method" << endl;
+
     return vec_order_list;
 }
 
@@ -1326,11 +1302,11 @@ string OrderList::stringToLog() {
 }
 
 Negotiate::Negotiate(const Negotiate &e) {
-    cout << "Inside copy constructor of Negotiate" << endl;
+
 };
 
 Negotiate &Negotiate::operator=(const Negotiate &e) {
-    cout << "Inside operator = of Negotiate" << endl;
+
 
     return *this;
 }

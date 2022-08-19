@@ -8,8 +8,8 @@
 #include "Cards.h"
 using namespace std;
 
-
-int main(){
+void PlayerTester();
+void PlayerTester(){
     //creating arbitary list of territories
   Territory *t1=new Territory("hhh",1,2,6);
   Territory *t2=new Territory("testttt",1,2,9);
@@ -58,7 +58,7 @@ int main(){
 
 cout<<p1;
 
-return 0;
+
 }
 
 
