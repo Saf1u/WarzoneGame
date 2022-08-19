@@ -42,7 +42,7 @@ where -g represents the number of games, -d represent number of turns for each p
 
 and run the binary by passing the -file option followed by the dir of the config generated
 
-##contributors
+## contributors
 - [@Saf1u](https://github.com/Saf1u)
 - [@MammarKoudari](https://github.com/MaamarKouadri)
 - [@Noorhammodi](https://github.com/noorhammodi)
